@@ -1,4 +1,5 @@
 BudgetTracker
+
 BudgetTracker is a straightforward application designed to help users manage their personal finances. It allows users to add income and expenses, categorize transactions, and view their transaction history. The application is built with JavaScript and SQL to store and manage data.
 
 Usage
