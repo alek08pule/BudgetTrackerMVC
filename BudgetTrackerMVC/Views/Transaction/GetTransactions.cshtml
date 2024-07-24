@@ -9,14 +9,14 @@
         <div class="incomeListContainer">
             <h3>Incomes <span id="income-transaction-count">@Model.incomeTransactions.Count(t => t.Category == "income")</span></h3>
             <div id="item-income-list">
-                @Html.Partial("_IncomeListPartial", Model.incomeTransactions);
+                @Html.Partial("_IncomeListPartial", Model.incomeTransactions)
             </div>
         </div>
 
         <div class="expenseListContainer">
             <h3>Expenses <span id="expense-transaction-count">@Model.expenseTransactions.Count(t => t.Category == "expense")</span></h3>
             <div id="item-expense-list">
-                @Html.Partial("_ExpenseListPartial", Model.expenseTransactions);
+                @Html.Partial("_ExpenseListPartial", Model.expenseTransactions)
             </div>
         </div>
     </div>

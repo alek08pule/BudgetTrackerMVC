@@ -1,7 +1,9 @@
-﻿using BudgetTrackerMVC.Domains;
+﻿using BudgetTrackerMVC.DataAccess;
+using BudgetTrackerMVC.Domains;
 using BudgetTrackerMVC.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BudgetTrackerMVC.Controllers
 {
@@ -9,11 +11,13 @@ namespace BudgetTrackerMVC.Controllers
     {
         private readonly SignInManager<User> signInManager;
         private readonly UserManager<User> userManager;
-        public UserController(SignInManager<User> signInManager, UserManager<User> userManager)
+        private readonly BudgetTrackerDbContext dbContext;
+        public UserController(SignInManager<User> signInManager, UserManager<User> userManager, BudgetTrackerDbContext dbContext)
 
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this. dbContext = dbContext;    
         }
 
         [HttpGet]
@@ -51,20 +55,33 @@ namespace BudgetTrackerMVC.Controllers
                     Firstname = model.Firstname,
                     Lastname = model.Lastname,
                     Email = model.Email,
-                    UserName=model.Email
-
+                    UserName = model.Email
                 };
-                var result= await userManager.CreateAsync(user,model.Password!);
+
+                var result = await userManager.CreateAsync(user, model.Password!);
                 if (result.Succeeded)
                 {
+                  
+                    UserBalance userBalance = new UserBalance
+                    {
+                        UserId = user.Id, 
+                        TotalIncome = 0,
+                        TotalExpense = 0,
+                     
+                    };
+
+                    dbContext.UserBalances.Add(userBalance);
+                    await dbContext.SaveChangesAsync();
+
                     await signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
-                foreach(var error in result.Errors)
+                foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("",error.Description);
+                    ModelState.AddModelError("", error.Description);
                 }
             }
+
             return View(model);
         }
         public async Task<IActionResult> Logout()

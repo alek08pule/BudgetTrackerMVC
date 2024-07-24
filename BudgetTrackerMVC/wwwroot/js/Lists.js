@@ -91,7 +91,7 @@
             success: function (response) {
                 if (response.success) {
                     console.log("Transaction deleted, ID:", id);
-                    getTransactions(); // Reload all transactions
+                    getTransactions(); 
                     updateBalance();
                 } else {
                     console.error('Error deleting transaction:', response.message);
