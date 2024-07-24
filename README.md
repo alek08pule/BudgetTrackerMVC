@@ -24,9 +24,9 @@ Technologies
 
 Used
 
-CSS 
-SQL
-JavaScript
-HTML
+CSS,
+SQL,
+JavaScript,
+HTML,
 C#
 
