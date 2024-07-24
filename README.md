@@ -11,6 +11,7 @@ Ensure you have SQL installed on your machine. Run the provided SQL script (setu
 Update the database connection settings in the configuration file (appsettings.json) with your SQL database credentials. Open the App: Double-click the index.html file to open the application in your web browser.
 Manage Your Budget: Start managing your finances by adding income and expense transactions, and view your transaction history to keep track of your budget.
 
+
 Features 
 
 Add income and expense transactions 
@@ -20,9 +21,16 @@ Real-time balance updates
 Data stored in an SQL database 
 Technologies 
 
-Used 
+
+Used
+
 CSS 
+
 SQL
-JavaScript 
-HTML 
+
+JavaScript
+
+HTML
+
 C#
+
