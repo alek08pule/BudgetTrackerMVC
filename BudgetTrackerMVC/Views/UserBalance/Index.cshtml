@@ -1,0 +1,70 @@
+﻿@using BudgetTrackerMVC.ViewModels
+@using BudgetTrackerMVC.ViewModels.BudgetTrackerMVC.ViewModels
+
+@model UserBalanceVM
+
+
+
+
+@{
+    ViewData["Title"] = "Balance";
+}
+
+<main class="main">
+    <div class="home-page" id="homePage" asp-controller="UserBalance" asp-action="Index">
+        <div class="sub-container">
+            <div class="budget_numbers">
+                <div class="number money-earned" id="earned">
+                    <small>Incomes</small>
+                    <div class="amount_container">
+                        <p id="earned_symbol">$</p>
+                        <span id="amount_earned">@Model.TotalIncome</span>
+                    </div>
+                </div>
+                <div class="number money-available" id="available">
+                    <small>Available</small>
+                    <div class="amount_container">
+                        <p id="available_symbol">$</p>
+                        <span id="amount_available">@Model.AvailableMoney</span>
+                    </div>
+                </div>
+                <div class="number money-spent" id="spent">
+                    <small>Expenses</small>
+                    <div class="amount_container">
+                        <p id="spent_symbol">$</p>
+                        <span id="amount_spent">@Model.TotalExpense</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inputs">
+                <form id="transactionForm">
+                    <div class="input_area">
+                        <input type="text" id="description" name="Description" placeholder="Description" />
+                        <input type="number" id="amount" name="Amount" placeholder="Amount" />
+                    </div>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="Category" id="categoryIncome" value="income" />
+                            <span class="bubble income"></span>
+                            <div>Income</div>
+                        </label>
+                        <label>
+                            <input type="radio" name="Category" id="categoryExpense" value="expense" />
+                            <span class="bubble expense"></span>
+                            <div>Expense</div>
+                        </label>
+                    </div>
+                    <div id="error"></div>
+                    <div class="button_container">
+                        <button class="btn" id="add">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+}

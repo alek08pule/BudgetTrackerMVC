@@ -1,0 +1,34 @@
+﻿@using BudgetTrackerMVC.ViewModels
+@model RegisterVM
+
+<div class="createAccountForm" id="createAccount">
+    <form asp-action="Register" method="post" class="form">
+        <h1 class="form_title">Register</h1>
+        <div asp-validation-summary="ModelOnly"></div>
+    
+        <div class="form_inputs-group">
+            <input asp-for="Firstname" id="firstName" class="form_input" type="text" autofocus placeholder="First Name" />
+            <span asp-validation-for="Firstname" class="text-danger"></span>
+        </div>
+        <div class="form_inputs-group">
+            <input asp-for="Lastname" id="lastName" class="form_input" type="text" autofocus placeholder="Last Name" />
+            <span asp-validation-for="Lastname" class="text-danger"></span>
+        </div>
+        <div class="form_inputs-group">
+            <input asp-for="Email" id="registrationEmail" class="form_input" type="text" autofocus placeholder="Email address" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form_inputs-group">
+            <input asp-for="Password" id="registrationPassword" class="form_input" type="password" autofocus placeholder="Enter password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form_inputs-group">
+            <input asp-for="ConfirmPassword" id="confirmPassword" class="form_input" type="password" autofocus placeholder="Confirm password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <button  class="form_button" type="submit">Sign Up</button>
+        <p class="form_text">
+            <a asp-action="Login" class="form_link" id="linkLogin">Already have an account? Sign in.</a>
+        </p>
+    </form>
+</div>

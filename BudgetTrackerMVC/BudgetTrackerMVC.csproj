@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\Lists.js" />
+    <Content Remove="wwwroot\js\Lists.js~RF294d826b.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\pffadk4t.unf~" />
+    <None Remove="Views\Transaction\4gmrxgal.riq~" />
+    <None Remove="Views\Transaction\_ExpenseListPartial.cshtml~RF29019808.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\Lists.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\Lists.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetTrackerMVC.DataAccess\BudgetTrackerMVC.DataAccess.csproj" />
+    <ProjectReference Include="..\BudgetTrackerMVC.Domains\BudgetTrackerMVC.Domains.csproj" />
+  </ItemGroup>
+
+</Project>

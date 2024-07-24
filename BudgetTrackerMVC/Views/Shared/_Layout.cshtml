@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Wallet</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="~/css/loginStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/mediaqueries.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header">
+        <h1>My Wallet</h1>
+        @if (User.Identity.IsAuthenticated){
+           <nav class="navigation">
+                 <a  asp-area="" asp-controller="UserBalance" asp-action="Index">Balance</a>
+
+                    <a  id="list-link" asp-area="" asp-controller="Transaction" asp-action="GetTransactions">List</a>
+
+                <a  asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+               
+                </nav>
+                <div class="dropdown">
+                    <button class="bars"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu top-50 end-0 drop is-right">
+                        <a class="dropdown-item" asp-area="" asp-controller="UserBalance" asp-action="Index">Balance</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Transaction" asp-action="GetTransactions">List</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                    </div>
+                </div>
+                }
+                
+            
+        
+    </header>
+
+    <div class="container">
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+
+  
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/formSubmitOnEnter.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/ClearCookie.js" asp-append-version="true"></script>
+    <script src="~/js/Lists.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

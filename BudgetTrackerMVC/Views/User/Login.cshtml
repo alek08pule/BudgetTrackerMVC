@@ -1,0 +1,31 @@
+﻿@using BudgetTrackerMVC.ViewModels
+
+@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="loginForm" id="login">
+    <form class="form" asp-controller="User" asp-action="Login" method="post">
+        <h1 class="form_title">Login</h1>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form_inputs-group">
+            <input asp-for="Email" id="loginEmail" class="form_input" type="text" autofocus placeholder="Email address" />
+            <span asp-validation-for="Email" class="form_input-error-messagetext-danger"></span>
+        </div>
+        <div class="form_inputs-group">
+            <input asp-for="Password" id="loginPassword" class="form_input" type="password" autofocus placeholder="Enter password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button class="form_button" type="submit" id="goToHomePage">Login</button>
+        <p class="form_text">
+            <a  asp-action="Register" class="form_link" id="linkCreateAccount">Don't have an account? Create account.</a>
+        </p>
+    </form>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

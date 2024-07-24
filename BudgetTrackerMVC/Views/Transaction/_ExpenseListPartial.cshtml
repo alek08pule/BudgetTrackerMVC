@@ -1,0 +1,15 @@
+﻿@model List<BudgetTrackerMVC.ViewModels.TransactionVM>
+
+@foreach (var item in Model)
+{
+    <div class="listOfExpenses" id="@item.Id">
+        <div class="description">
+            <h4>@item.Description</h4>
+        </div>
+        <div class="symbol-amount">
+            <span>$</span>
+            <span class="expense_amount">@item.Amount</span>
+        </div>
+        <button class="delete-btn" data-id="@item.Id"><i class="fa fa-xmark"></i></button>
+    </div>
+}

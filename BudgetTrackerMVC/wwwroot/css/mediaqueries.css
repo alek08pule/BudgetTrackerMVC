@@ -1,0 +1,181 @@
+﻿@media screen and (min-width: 700px) and (max-width:1050px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu {
+        margin-right: 8%;
+    }
+
+        .menu .dropdown-item {
+            margin-right: 5%;
+        }
+
+    .main {
+        margin-top: 80px;
+        display: block;
+    }
+
+    .home-page {
+        display: flex;
+    }
+
+    .lists-page {
+        display: block;
+        width: 80%;
+        height: 90vh;
+        max-height: fit-content;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .sub-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+    }
+
+    .budget_numbers {
+        width: 70%;
+    }
+
+    .number {
+        margin: 1% 0;
+    }
+
+    .inputs {
+        width: 70%;
+        padding: 2rem 0;
+        flex-direction: column;
+    }
+
+    .input_area #description {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .input_area #amount {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .button_container {
+        margin: 0;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .incomeListContainer,
+    .expenseListContainer {
+        width: 80%;
+        align-items: center;
+        border-right: none;
+    }
+}
+
+
+@media screen and (max-width: 630px) {
+    body {
+        display: block;
+    }
+
+    .main {
+        display: block;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .navbar .logo {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .dropdown {
+        display: flex;
+    }
+
+    button {
+        border: none;
+    }
+
+    .bars .fa {
+        color: #2A3166;
+        font-size: 1rem;
+        align-self: center;
+        justify-self: center;
+    }
+
+        .bars .fa:hover {
+            color: #f48785;
+            transition: 0.3s;
+        }
+
+    .navbar .dropdown-menu .dropdown-item {
+        color: #2A3166;
+    }
+
+    .navbar .dropdown-item:hover {
+        color: #FF9E00;
+        transition: 0.3s;
+    }
+
+    .incomeListContainer,
+    .expenseListContainer {
+        width: 100%;
+        align-items: center;
+        border: none;
+    }
+
+
+    .sub-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
+    .inputs {
+        padding: 2rem 0;
+        flex-direction: column;
+    }
+
+    .input_area #description {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .input_area #amount {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .button-container {
+        margin: 0;
+    }
+
+    #add {
+        width: 100%;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .home-page {
+        display: flex;
+        width: 100%;
+    }
+
+    .lists-page {
+        display: block;
+        width: 100%;
+    }
+}
