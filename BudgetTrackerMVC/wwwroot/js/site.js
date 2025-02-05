@@ -1,4 +1,6 @@
-﻿$(function () {
+﻿console.log("this is working");
+
+$(function () {
     $('#transactionForm').off('submit').on('submit', function (event) {
         event.preventDefault();
 
@@ -11,10 +13,12 @@
                 $('#amount_earned').text(data.totalIncome.toFixed(2));
                 $('#amount_available').text(data.availableMoney.toFixed(2));
                 $('#amount_spent').text(data.totalExpense.toFixed(2));
+                console.log('inside ajax');
                 $('#transactionForm')[0].reset();
                 $('#error').empty();
                 $('#add').prop('disabled', false);
             },
+            
             error: function (jqXHR) {
                 var errors = jqXHR.responseJSON.errors;
                 var errorMessages = [];
@@ -27,6 +31,9 @@
 
                 $('#error').html(errorMessages.join('<br/>'));
             }
+           
         });
     });
 });
+console.log("end");
+

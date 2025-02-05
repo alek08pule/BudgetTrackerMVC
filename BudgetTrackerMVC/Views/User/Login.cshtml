@@ -7,25 +7,41 @@
 }
 <div class="loginForm" id="login">
     <form class="form" asp-controller="User" asp-action="Login" method="post">
-        <h1 class="form_title">Login</h1>
+        @Html.AntiForgeryToken()
+        
         <div asp-validation-summary="ModelOnly"></div>
         <div class="form_inputs-group">
-            <input asp-for="Email" id="loginEmail" class="form_input" type="text" autofocus placeholder="Email address" />
+            <input asp-for="Email" id="loginEmail" class="form_input" type="text" placeholder="Email address"  />
             <span asp-validation-for="Email" class="form_input-error-messagetext-danger"></span>
         </div>
         <div class="form_inputs-group">
-            <input asp-for="Password" id="loginPassword" class="form_input" type="password" autofocus placeholder="Enter password" />
-            <span asp-validation-for="Password" class="text-danger"></span>
+            <div class="inputPass">
+                <input asp-for="Password" id="loginPassword" class="form_input" type="password" placeholder="Enter password" />
+                <span asp-for="simbol" id="togglePassword" class="eye-icon"></span>
+            </div>
+                      <span asp-validation-for="Password" class="text-danger"></span>
+            
         </div>
-        <button class="form_button" type="submit" id="goToHomePage">Login</button>
+       
+
+        <button class="form_button" type="submit" id="goToHomePage">Sign In</button>
         <p class="form_text">
-            <a  asp-action="Register" class="form_link" id="linkCreateAccount">Don't have an account? Create account.</a>
+        Don't have an account?
+            <a  asp-action="Register" class="form_link" id="linkCreateAccount"> Create account.</a>
         </p>
     </form>
 </div>
 
-@section Scripts{
+@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+<script>
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const passwordField = document.getElementById("loginPassword");
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+        });
+</script>
 }

@@ -22,7 +22,7 @@
 </head>
 <body>
     <header class="header">
-        <h1>My Wallet</h1>
+        <img id="MWalletLogo" src="~/Assets/MWalletLogo.png" alt="logo" />
         @if (User.Identity.IsAuthenticated){
            <nav class="navigation">
                  <a  asp-area="" asp-controller="UserBalance" asp-action="Index">Balance</a>
@@ -60,10 +60,10 @@
   
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/formSubmitOnEnter.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/ClearCookie.js" asp-append-version="true"></script>
+   
     <script src="~/js/Lists.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

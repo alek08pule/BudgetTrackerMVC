@@ -19,6 +19,7 @@ namespace BudgetTrackerMVC.Domains
         public string? Lastname { get; set; }
         public ICollection<Transaction>? Transactions { get; set; }
         public UserBalance? UserBalances{ get; set;}
+        
 
     }
 }

@@ -17,7 +17,7 @@ namespace BudgetTrackerMVC.Controllers
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
-            this. dbContext = dbContext;    
+            this.dbContext = dbContext;
         }
 
         [HttpGet]
@@ -28,9 +28,9 @@ namespace BudgetTrackerMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.Email!, model.Password!, false,false);
+                var result = await signInManager.PasswordSignInAsync(model.Email!, model.Password!, false, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "UserBalance");
@@ -38,7 +38,7 @@ namespace BudgetTrackerMVC.Controllers
                 ModelState.AddModelError("", "Invalid login attempt");
                 return View(model);
             }
-            
+
             return View(model);
         }
         public IActionResult Register()
@@ -61,20 +61,20 @@ namespace BudgetTrackerMVC.Controllers
                 var result = await userManager.CreateAsync(user, model.Password!);
                 if (result.Succeeded)
                 {
-                  
+
                     UserBalance userBalance = new UserBalance
                     {
-                        UserId = user.Id, 
+                        UserId = user.Id,
                         TotalIncome = 0,
                         TotalExpense = 0,
-                     
+
                     };
 
                     dbContext.UserBalances.Add(userBalance);
                     await dbContext.SaveChangesAsync();
 
                     await signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "User");
                 }
                 foreach (var error in result.Errors)
                 {

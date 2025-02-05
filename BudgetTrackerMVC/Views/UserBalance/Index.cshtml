@@ -13,6 +13,13 @@
 <main class="main">
     <div class="home-page" id="homePage" asp-controller="UserBalance" asp-action="Index">
         <div class="sub-container">
+            <script id="chartData" type="application/json">
+                @Html.Raw(Json.Serialize(Model.ChartData))
+            </script>
+            <div class="charDoughtnut">
+                <canvas id="myChart" >
+                </canvas>
+             </div>
             <div class="budget_numbers">
                 <div class="number money-earned" id="earned">
                     <small>Incomes</small>
@@ -35,6 +42,7 @@
                         <span id="amount_spent">@Model.TotalExpense</span>
                     </div>
                 </div>
+            
             </div>
             <div class="inputs">
                 <form id="transactionForm">
@@ -62,9 +70,17 @@
             </div>
         </div>
     </div>
+    
+
 </main>
 
 @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/MyChart.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="~/js/site.js"></script>
+    
+
 }
+

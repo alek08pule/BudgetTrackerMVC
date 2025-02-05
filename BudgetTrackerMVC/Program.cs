@@ -3,7 +3,7 @@ using BudgetTrackerMVC.Domains;
 using BudgetTrackerMVC.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace BudgetTrackerMVC
 {
@@ -31,19 +31,25 @@ namespace BudgetTrackerMVC
             })
                 .AddEntityFrameworkStores<BudgetTrackerDbContext>().AddDefaultTokenProviders();
             builder.Services.AddHttpContextAccessor();
-            builder.Services.ConfigureApplicationCookie(options =>
+            builder.Services.AddSession();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
                 options.SlidingExpiration = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.Events.OnRedirectToLogin = context =>
                 {
                     context.Response.Redirect("/User/Login");
                     return Task.CompletedTask;
                 };
+
             });
 
             builder.Services.AddScoped<IUserService, UserService>();
+
+            builder.Services.AddRazorPages()
+                .AddRazorRuntimeCompilation();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -56,6 +62,8 @@ namespace BudgetTrackerMVC
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

@@ -10,6 +10,7 @@ namespace BudgetTrackerMVC.ViewModels
             public decimal TotalIncome { get; set; }
             public decimal TotalExpense { get; set; }
             public decimal AvailableMoney { get; set; }
+            public List<decimal> ChartData => new List<decimal> { TotalIncome, TotalExpense, AvailableMoney };
         }
     }
 
